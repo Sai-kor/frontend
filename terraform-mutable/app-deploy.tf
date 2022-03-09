@@ -4,8 +4,8 @@ resource "null_resource" "app-deploy" {
   provisioner "remote-exec" {
     connection {
       type     = "ssh"
-      user     = jsondecode(data.aws_secretsmanager_secret_version.secrets.secret_string)["SSH_username"]
-      password = jsondecode(data.aws_secretsmanager_secret_version.secrets.secret_string)["SSH_password"]
+      user     = jsondecode(data.aws_secretsmanager_secret_version.secrets.secret_string)["username"]
+      password = jsondecode(data.aws_secretsmanager_secret_version.secrets.secret_string)["password"]
       host     = aws_spot_instance_request.ec2-spot.*.private_ip[count.index]
     }
     inline = [
