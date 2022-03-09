@@ -32,10 +32,11 @@ resource "aws_lb_target_group_attachment" "tg-attach" {
 }
 
 ##alb module is only to create alb, so to attach tg to alb,we cannot directly do that ,first we need to add a listener and it should be part of app-setup
+
 resource "aws_lb_listener" "lb-listener" {
   load_balancer_arn = data.terraform_remote_state.alb.outputs.PUBLIC_ALB_ARN
   port              = "80"
-  protocol          = "HTTPS"
+  protocol          = "HTTP"
 
   default_action {
     type             = "forward"
