@@ -5,7 +5,8 @@ resource "aws_spot_instance_request" "ec2-spot" {
   tags = {
     Name = "${var.COMPONENT}-${var.ENV}-${count.index+1}"
   }
- subnet_id = data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNETS[count.index] #creates ec2 spot instance in that particular vpc and private subnet id getting data from data.tf remote state resource
+ subnet_id = data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNETS[count.index]
+  #creates ec2 spot instance in that particular vpc and private subnet id getting data from data.tf remote state resource
 }
 
 resource "aws_ec2_tag" "spot-instances" {
