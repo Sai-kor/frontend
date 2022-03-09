@@ -1,6 +1,6 @@
 resource "aws_security_group" "sg" {
-  name        = "sg_${var.COMPONENT}-${var.ENV}}"
-  description = "sg_${var.COMPONENT}-${var.ENV}}"
+  name        = "sg_${var.COMPONENT}-${var.ENV}"
+  description = "sg_${var.COMPONENT}-${var.ENV}"
   vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
 
   ingress {
@@ -28,6 +28,6 @@ resource "aws_security_group" "sg" {
   }
 
   tags = {
-    Name = "sg_${var.COMPONENT}-${var.ENV}}"
+    Name = "sg_${var.COMPONENT}-${var.ENV}"
   }
 }
