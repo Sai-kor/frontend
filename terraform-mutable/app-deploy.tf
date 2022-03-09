@@ -1,5 +1,5 @@
 ## this null resource do nothing , but we give provisioner , provisioner is one which is going to help you to connect to ec2 instances/linux instances by providing required information.It can connect to the instances and execute the commands
-resource "null_reosurce" "app-deploy" {
+resource "null_resource" "app-deploy" {
   count = length(aws_spot_instance_request.ec2-spot)
   provisioner "remote-exec" {
     connection {
