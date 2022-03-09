@@ -15,3 +15,12 @@ data "terraform_remote_state" "vpc" {
   }
 }
 
+data "terraform_remote_state" "alb" {
+  backend = "s3"
+  config = {
+    bucket = "sa-newbuck-1"
+    key    = "mutable/alb/${var.ENV}/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+
