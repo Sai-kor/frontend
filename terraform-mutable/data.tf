@@ -4,3 +4,14 @@ data "aws_ami" "ami" {
   name_regex       = "base-with-ansible"
   owners           = ["self"]
 }
+
+## aws s3 backend configuration -- to access data from vpc statefile and outputs block
+data "terraform_remote_state" "vpc" {
+  backend = "s3"
+  config = {
+    bucket = "sa-newbuck-1"
+    key    = "vpc/${var.ENV}/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+
